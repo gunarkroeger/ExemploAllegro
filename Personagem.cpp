@@ -13,18 +13,13 @@ Personagem::Personagem()
 
 Personagem::~Personagem()
 {
-    destroy_bitmap(img);  // Destrói a imagem;    
+                        
 }
 
 /* Sets */
     void Personagem::setimg( BITMAP* I )
     {
         img = I;         
-    }
-    
-    void Personagem::setbuffer( BITMAP* B )
-    {
-        buffer = B;         
     }
     
     void Personagem::setx( int X )
@@ -98,13 +93,18 @@ Personagem::~Personagem()
     {
                                       //  |Se a seta para cima for pressionada 
                                       //  |o personagem tem sua posição em Y 
-         if (key[KEY_UP]) y = y - vy; // -|reduzida (no Allegro o eixo Y é oposto)
+         if ((key[KEY_UP])&&( y > 0 )) y = y - vy; // -|reduzida (no Allegro o eixo Y é oposto)
                                       //  |e se desloca para cima tantos pixels
                                       //  |quanto for o valor da velocidade do personagem em Y.
-         if (key[KEY_DOWN]) y = y + vy;  // Análogo ao anterior, porém, para baixo. 
-         if (key[KEY_RIGHT]) x = x + vx; // Em x o eixo é padrão, portanto para a direita é positivo.
-         if (key[KEY_LEFT]) x = x - vx;  // E para a esquerda negativo.                      
+         if ((key[KEY_DOWN])&&( (y+h) < 600)) y = y + vy;  // Análogo ao anterior, porém, para baixo. 
+         if ((key[KEY_RIGHT])&&( (x+l) < 800)) x = x + vx; // Em x o eixo é padrão, portanto para a direita é positivo.
+         if ((key[KEY_LEFT])&&( x > 0)) x = x - vx;  // E para a esquerda negativo.                      
     }
+
+void Personagem::setbuffer(BITMAP* B)
+{
+     buffer = B;
+}
 
 void Personagem::Desenha()
 {

@@ -6,12 +6,15 @@
 class Principal
 {
     private:
-           Jogo J;       // O Jogo em si.
-           Personagem P; // O Personagem.
+           Jogo J;       // O Jogo em si
+           Jogador  P1;  // O Jogador 1
+           Jogador2 P2;  // O Jogador 2
+            
     public:
            Principal();
            ~Principal();
            void Executar();      
+           void Inicializar();
 };
 
 #endif

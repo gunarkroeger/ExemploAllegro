@@ -5,9 +5,9 @@
 
 class Personagem
 {
-    private:
-           BITMAP* img; // Imagem
-           BITMAP* buffer;
+    protected:          // Protected para que as classes derivadas possuam esses atributos.
+           BITMAP* img; // Imagem.
+           BITMAP* buffer; // buffer para que o jogador possa se desenhar na tela.
            int x;       // Posição em x.
            int y;       // Posição em y.
            int h;       // Altura da imagem.
@@ -21,7 +21,6 @@ class Personagem
            
            /* Sets */
            void setimg( BITMAP* I );
-           void setbuffer( BITMAP* B);
            void setx( int X );
            void sety( int Y );
            void seth( int H );
@@ -39,8 +38,9 @@ class Personagem
            int getvy();
            
            /* Movimentação */
-           void Movimento();
+           virtual void Movimento();  // virtual para que o método possa ser redefinido nas subclasses
            
+           void setbuffer( BITMAP* B);
            void Desenha();
            
 };

@@ -2,12 +2,13 @@
 
 void init();
 void deinit();
-           
+
 int main() 
 {
-    init();
+	init();
     Principal ObjPrincipal;
     
+	deinit();
 	return 0;
 }
 END_OF_MAIN()
@@ -28,7 +29,7 @@ void init()
 
 	install_timer();
 	install_keyboard();
-	install_mouse(); 
+	install_mouse();
 	/* add other initializations here */
 }
 
