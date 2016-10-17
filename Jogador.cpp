@@ -1,20 +1,30 @@
 #include "Jogador.h"
-#include "Jogador2.h"
 
-Jogador::Jogador() : Personagem()
+Jogador::Jogador(): num(1), Personagem()
+{
+ 
+}
+
+Jogador::Jogador(const short int N) : num(N), Personagem()
 {
  
 }
 
 Jogador::~Jogador()
 {
-  destroy_bitmap(img);  // Destrói a imagem;                     
+  img = NULL;      
 }
 
+/* Gets */
+    const short int Jogador::getnum()
+    {
+        return num;
+    }
+            
 /* Movimentação */
     void Jogador::Movimento()    
     {
-         if ((key[KEY_UP])&&( y > 0 )&&(C == false)) 
+         if ((((num == 1)&&(key[KEY_UP]))||((num == 2)&&(key[KEY_W])))&&(C == false)) 
          {
              if (direcao == 2) x = x + ((l/2) - (h/2)); 
              // Ao mudar de direção reposiciona a imagem para que a curva
@@ -35,7 +45,7 @@ Jogador::~Jogador()
              //  |for maior que 0 -> COLISÃO COM A TELA 
              //  |A imagem não se movimentará para cima caso a variável 
              //  |de colisão C esteja ativa (true)
-         else if ((key[KEY_DOWN])&&( (y+h) < 600)&&(B == false))   
+         else if ((((num == 1)&&(key[KEY_DOWN]))||((num == 2)&&(key[KEY_S])))&&(B == false))
          {
              if (direcao == 2) x = x + ((l/2) - (h/2)); 
              Sx = 11;
@@ -52,7 +62,7 @@ Jogador::~Jogador()
              //  |X e Y são obtidas do canto superior esquerdo da imagem.
              //  |A imagem não se movimentará para baixo caso a variável 
              //  |de colisão B esteja ativa (true)
-         else if ((key[KEY_RIGHT])&&( (x+l) < 800)&&(D == false))  
+         else if ((((num == 1)&&(key[KEY_RIGHT]))||((num == 2)&&(key[KEY_D])))&&(D == false))
          {
              if (direcao == 1) y = y + ((h/2) - (l/2));                     
              Sx = 348;
@@ -66,7 +76,7 @@ Jogador::~Jogador()
              // colisão com a tela análoga ao anterior, porém, na direção X 
              // a posição é somada com a Largura do objeto.
              // colisão com objetos análoga à anterior.
-         else if ((key[KEY_LEFT])&&( x > 0)&&(E == false)) 
+         else if ((((num == 1)&&(key[KEY_LEFT]))||((num == 2)&&(key[KEY_A])))&&(E == false))
          {
              if (direcao == 1) y = y + ((h/2) - (l/2));                     
              Sx = 349;
@@ -80,9 +90,10 @@ Jogador::~Jogador()
              // colisão com objetos análoga à anterior.             
     }
 
-    void Jogador::testecolisao(Jogador2* P2)
+    void Jogador::testecolisao(Jogador* P2, int Xmin, int Xmax, int Ymin, int Ymax)
     {
-    
+        
+        // Colisão com o outro jogador.
         if ((((x + l) >= P2->getx()))&&(x <= P2->getx())&&((y + h) >= P2->gety())&&( y <= (P2->gety()+P2->geth())))  
         {
             D = true; 
@@ -114,4 +125,11 @@ Jogador::~Jogador()
             D = false; // para que o objeto possa se mover novamente.
             E = false;
         }
+        
+        // Colisão com a tela.
+        if ( y < Ymin )      C = true;
+        if ( (y+h) > Ymax) B = true;
+        if ( (x+l) > Xmax) D = true;   
+        if ( x < Xmin)       E = true;
+    
     }

@@ -7,11 +7,14 @@ Personagem::Personagem()
     D = false;
     E = false;
     direcao = 1;
+    img = NULL;
+    buffer = NULL;
 }
 
 Personagem::~Personagem()
 {
-   buffer = NULL;                    
+   buffer = NULL;   
+   destroy_bitmap(img);  // Destrói a imagem;                   
 }
 
 /* Sets */
@@ -110,21 +113,6 @@ Personagem::~Personagem()
     {
         return Sy;
     }
-
-/* Movimentação */
-    void Personagem::Movimento()    
-    {
-                                                                 //  |Se a seta para cima for pressionada 
-                                                                 //  |o personagem tem sua posição em Y 
-         if ((key[KEY_UP])&&( y > 0 )&&(C == false)) y = y - vy; // -|reduzida (no Allegro o eixo Y é oposto)
-                                                                 //  |e se desloca para cima tantos pixels
-                                                                 //  |quanto for o valor da velocidade do personagem em Y.
-         if ((key[KEY_DOWN])&&( (y+h) < 600)&&(B == false)) y = y + vy;  // Análogo ao anterior, porém, para baixo. 
-         if ((key[KEY_RIGHT])&&( (x+l) < 800)&&(D == false)) x = x + vx; // Em x o eixo é padrão, portanto para a direita é positivo.
-         if ((key[KEY_LEFT])&&( x > 0)&&(E == false)) x = x - vx;        // E para a esquerda negativo.                      
-    }
-
-
 
 void Personagem::Desenha()
 {

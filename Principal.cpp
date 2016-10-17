@@ -1,6 +1,7 @@
 #include "Principal.h"
 
-Principal::Principal()
+Principal::Principal():
+P2(2)
 {
     Executar();                      
 }
@@ -48,9 +49,11 @@ void Principal::Inicializar()
     M.setbuffer(J.getbuffer());
     M.setfundoraiz(load_bitmap("Arquivos//Imagens//Menuraiz.bmp", NULL));  
     M.setfundocreditos(load_bitmap("Arquivos//Imagens//Menucreditos.bmp", NULL)); 
+    M.setfundosair(load_bitmap("Arquivos//Imagens//Menusair.bmp", NULL));  
     M.setcursor(load_bitmap("Arquivos//Imagens//Objeto1b.bmp", NULL));  
     M.setjogo(&J); 
     // Associa o Jogo ao Menu para que o Jogo possa ser iniciado a partir dele.
 
     J.setjogadores(&P1, &P2); // Associa os jogadores ao jogo.
+    J.setmenu(&M); // Associa o menu ao jogo.
 }

@@ -10,7 +10,7 @@ class Principal
            Menu M;       // Menu principal do jogo.
            Jogo J;       // O Jogo em si.
            Jogador  P1;  // O Jogador 1.
-           Jogador2 P2;  // O Jogador 2.
+           Jogador  P2;  // O Jogador 2.
             
     public:
            Principal();

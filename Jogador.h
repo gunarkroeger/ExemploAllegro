@@ -2,21 +2,27 @@
 #define _JOGADOR_H_
 
 #include "Personagem.h"
-class Jogador2;
 
 class Jogador : public Personagem
 {
     private:
+            const short int num; 
+            // Varável que informa qual é o número do jogador
+            // jogador 1, jogador 2 etc...
             
     public:
             Jogador();
+            Jogador(const short int N);
             ~Jogador();
+            
+            /* Gets */
+            const short int getnum();
             
             /* Movimentação */
             void Movimento();
             
             /* Colisão */
-            void testecolisao(Jogador2* P2);
+            void testecolisao(Jogador* P2, int Xmin, int Xmax, int Ymin, int Ymax);
            
 };
 
