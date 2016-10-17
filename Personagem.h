@@ -35,6 +35,7 @@ class Personagem
            void setvy( const short int VY );
            void setsx( const short int SX );
            void setsy( const short int SY );
+           void setbuffer( BITMAP* B);
            
            /* Gets */
            BITMAP* getimg();
@@ -50,7 +51,6 @@ class Personagem
            /* Movimentação */
            virtual void Movimento();  // virtual para que o método possa ser redefinido nas subclasses
            
-           void setbuffer( BITMAP* B);
            void Desenha();
            
 };

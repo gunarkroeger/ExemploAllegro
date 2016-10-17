@@ -7,7 +7,7 @@ Jogo::Jogo()
 
 Jogo::~Jogo()
 {
-   destroy_bitmap(buffer);  // Destrói a imagem;                        
+   destroy_bitmap(buffer);  // Destrói a imagem;       
 }
 
 void Jogo::Inicializar()
@@ -52,6 +52,9 @@ void Jogo::Tela1()
         clear( buffer ); // Limpa o buffer;
         
     }
+    rest(100); // Rest para evitar que o programa reconheça que o botão de 
+               // voltar foi pressionado várias vezes e acabe saindo do 
+               // jogo inteiro. 
 }
 
 /* Sets */

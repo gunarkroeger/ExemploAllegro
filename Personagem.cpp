@@ -11,7 +11,7 @@ Personagem::Personagem()
 
 Personagem::~Personagem()
 {
-                        
+   buffer = NULL;                    
 }
 
 /* Sets */
@@ -58,6 +58,11 @@ Personagem::~Personagem()
     void Personagem::setsy( const short int SY )
     {
         Sy = SY;         
+    }
+    
+    void Personagem::setbuffer(BITMAP* B)
+    {
+         buffer = B;
     }
     
 /* Gets */
@@ -119,10 +124,7 @@ Personagem::~Personagem()
          if ((key[KEY_LEFT])&&( x > 0)&&(E == false)) x = x - vx;        // E para a esquerda negativo.                      
     }
 
-void Personagem::setbuffer(BITMAP* B)
-{
-     buffer = B;
-}
+
 
 void Personagem::Desenha()
 {

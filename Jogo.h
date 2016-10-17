@@ -12,10 +12,9 @@ class Jogo
            // Bitmap de buffer para desenhar todas as imagens nele
            // e logo em seguida jogá-lo inteiro na tela, isso evita
            // que a tela ou as imagens fiquem piscando.
-           Jogador* P1;
-           Jogador2* P2;
-           Cenario C;
-           
+           Jogador* P1;  // Jogador 1;
+           Jogador2* P2; // Jogaodr 2;
+           Cenario C;    // Cenário do jogo.
            
            
     public:
