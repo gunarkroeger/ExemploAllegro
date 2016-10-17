@@ -1,24 +1,24 @@
 [Project]
-FileName=Movimento_vF.dev
-Name=Movimento_vF
-UnitCount=17
+FileName=Movimento_vG.dev
+Name=Movimento_vG
+UnitCount=23
 Type=0
 Ver=1
 ObjFiles=
 Includes=
 Libs=
-PrivateResource=
+PrivateResource=Movimento_vG_private.rc
 ResourceIncludes=
 MakeIncludes=
-Compiler=-DALLEGRO_STATICLINK
-CppCompiler=-DALLEGRO_STATICLINK
-Linker=-lalleg_s -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lole32 -ldinput -lddraw -ldxguid -lwinmm -ldsound
+Compiler=-DALLEGRO_STATICLINK_@@_
+CppCompiler=-DALLEGRO_STATICLINK_@@_
+Linker=-lalleg_s -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lole32 -ldinput -lddraw -ldxguid -lwinmm -ldsound_@@_
 IsCpp=1
-Icon=Movimento_vF.ico
+Icon=Movimento_vG.ico
 ExeOutput=
 ObjectOutput=
 OverrideOutput=0
-OverrideOutputName=
+OverrideOutputName=Movimento_vG.exe
 HostApplication=
 Folders=
 CommandLine=
@@ -27,12 +27,12 @@ CustomMakefile=
 IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
-CompilerSettings=
+CompilerSettings=0000000000000000000000
 
 [Unit1]
 FileName=Cenario.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -42,7 +42,7 @@ BuildCmd=
 [Unit2]
 FileName=Cenario.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -52,7 +52,7 @@ BuildCmd=
 [Unit3]
 FileName=GerenciadorGrafico.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -62,7 +62,7 @@ BuildCmd=
 [Unit4]
 FileName=GerenciadorGrafico.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -70,9 +70,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=Jogador.cpp
+FileName=Inimigo.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -80,9 +80,29 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
+FileName=Inimigo.h
+CompileCpp=1
+Folder=Movimento_vG
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit7]
+FileName=Jogador.cpp
+CompileCpp=1
+Folder=Movimento_vG
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
 FileName=Jogador.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -90,9 +110,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=main.cpp
+FileName=Jogo.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -100,9 +120,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=Menu.cpp
+FileName=Jogo.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -110,9 +130,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=Menu.h
+FileName=main.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -120,9 +140,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=Personagem.cpp
+FileName=Mapa1.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -130,9 +150,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=Personagem.h
+FileName=Mapa1.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -140,9 +160,9 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=Principal.cpp
+FileName=Menu.cpp
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -150,9 +170,19 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=Principal.h
+FileName=Menu.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=Movimento_vG
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
+FileName=Personagem.cpp
+CompileCpp=1
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -160,9 +190,29 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit17]
-FileName=Mapa1.h
+FileName=Personagem.h
 CompileCpp=1
-Folder=
+Folder=Movimento_vG
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit18]
+FileName=Principal.cpp
+CompileCpp=1
+Folder=Movimento_vG
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit19]
+FileName=Principal.h
+CompileCpp=1
+Folder=Movimento_vG
 Compile=1
 Link=1
 Priority=1000
@@ -187,28 +237,8 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 
-[Unit18]
-FileName=Mapa1.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit19]
-FileName=Mapa1.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit20]
-FileName=Mapa1.cpp
+FileName=Tanque.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -218,7 +248,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit21]
-FileName=Mapa1.h
+FileName=Tanque.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -227,28 +257,18 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
-FileName=Jogo.cpp
+[Unit22]
+FileName=Peixe.h
 CompileCpp=1
-Folder=Movimento_vF
+Folder=
 Compile=1
 Link=1
 Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit8]
-FileName=Jogo.h
-CompileCpp=1
-Folder=Movimento_vF
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit16]
-FileName=Mapa1.cpp
+[Unit23]
+FileName=Peixe.cpp
 CompileCpp=1
 Folder=
 Compile=1

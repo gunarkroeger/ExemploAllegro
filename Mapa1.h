@@ -3,6 +3,8 @@
 
 #include "Jogador.h"
 #include "Cenario.h"
+#include "Tanque.h"
+#include "Peixe.h" 
 
 class Menu;
 
@@ -22,10 +24,14 @@ class Mapa1
            // Bitmap de buffer para desenhar todas as imagens nele
            // e logo em seguida jogá-lo inteiro na tela, isso evita
            // que a tela ou as imagens fiquem piscando.
-           Jogador* P1;    // Jogador 1;
+           Jogador* P1;   // Jogador 1;
            Jogador* P2;   // Jogaodr 2;
-           Cenario Mar;    // Parte de água no cenário do jogo.
-           Cenario Terra;  // Parte terrestre no cenario do jogo.
+           Cenario Mar;   // Parte de água no cenário do jogo.
+           Cenario Terra; // Parte terrestre no cenario do jogo.
+           Tanque T1;     // Inimigo Tanque.
+           Peixe Px1;     // Inimigo Peixe.
+           Peixe Px2;     // Inimigo Peixe.
+           Peixe Px3;     // Inimigo Peixe.
            bool inicio;
            
     public:
@@ -37,6 +43,7 @@ class Mapa1
            bool Sair();
            void Tela1();
            void Tela2();
+           void Tela3();
            
            /* Sets */
            void setjogadores(Jogador* P, Jogador* PP);

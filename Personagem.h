@@ -54,7 +54,7 @@ class Personagem
            // = 0 para tornar a classe 'abstrata', já que não será criado 
            // nenhum objeto Personagem.
            
-           void Desenha();
+           virtual void Desenha();
            
 };
 

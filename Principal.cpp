@@ -22,8 +22,6 @@ void Principal::Inicializar()
     Allegro.init(); 
     J.Inicializar();
     
-   
-    
     P1.setimg(load_bitmap("Arquivos//Imagens//Objeto1b.bmp", NULL));  //carrega a imagem a partir da pasta onde ela está.
     P1.setbuffer(J.getbuffer()); // Associa o buffer ao jogador para que possa se desenhar na tela.
     P1.seth(177); // inicializa a altura da imagem/personagem.

@@ -13,27 +13,83 @@ Mapa1::~Mapa1()
 
 void Mapa1::Inicializar()
 {
-     inicio = true;
-     Mar.setbuffer(buffer);
-     Mar.setimg(load_bitmap("Arquivos//Imagens//mar.bmp", NULL));
-     Mar.setx(0);  
-     Mar.sety(-1200);
-     Mar.setv(1);              
-     Mar.setRV(0);
-     Terra.setbuffer(buffer);
-     Terra.setimg(load_bitmap("Arquivos//Imagens//Barreira1.bmp", NULL));
-     Terra.setx(0);  
-     Terra.sety(0);
-     Terra.setv(0);              
-     Terra.setRV(0);
-     /* As funções foram colocardas nesse método "Inicializar",
-     porque, caso colocadas na construtora, causam um erro no programa.
-     Esse erro ocorre porque a Biblioteca Gráfica está sendo inicializada
-     na classe Principal, sendo assim, os objetos agregados nessa classe
-     têm suas construtoras 'lidas' antes da inicialização da biblioteca,
-     portanto o programa não reconhece as funções e ocorre o erro.
-        Desta forma, os objetos são inicializados depois da biblioteca gráfica
-     portanto, não há problemas. */          
+    inicio = true;
+    
+    Mar.setbuffer(buffer);
+    Mar.setimg(load_bitmap("Arquivos//Imagens//mar.bmp", NULL));
+    Mar.setx(0);  
+    Mar.sety(-1200);
+    Mar.setv(1);              
+    Mar.setRV(0);
+    
+    Terra.setbuffer(buffer);
+    Terra.setimg(load_bitmap("Arquivos//Imagens//Barreira1.bmp", NULL));
+    Terra.setx(0);  
+    Terra.sety(0);
+    Terra.setv(0);              
+    Terra.setRV(0);
+    
+    
+    T1.setbuffer(buffer); // Associa o buffer ao personagem para que ele possa se desenhar na tela.
+    T1.setimg(load_bitmap("Arquivos//Imagens//Tanque1.bmp", NULL));  //carrega a imagem a partir da pasta onde ela está.
+    T1.seth(31);  // inicializa a altura da imagem/personagem.
+    T1.setl(31);  // inicializa a largura da imagem/personagem.
+    T1.setx(670); // Posição inicial em x.
+    T1.sety(470); // Posição incial em y.
+    T1.setvx(0);  // Velocidade incial do objeto em x.
+    T1.setvy(1);  // Velocidade incial do objeto em y.
+    T1.setsx(0);  // Posição x do sprite na imagem maior.
+    T1.setsy(0);  // Posição y do sprite na imagem maior.
+    
+    Px1.setbuffer(buffer); 
+    Px1.setimg(load_bitmap("Arquivos//Imagens//Aquatico1.bmp", NULL)); 
+    Px1.seth(30); 
+    Px1.setl(30); 
+    Px1.setx(50); 
+    Px1.sety(50);  // Inicialização dos atributos do inimigo peixe.
+    Px1.setvx(0);  
+    Px1.setvy(0);  
+    Px1.setsx(3);
+    Px1.setsy(0);  
+    Px1.setA(0);   // Inicialização da variável responsável pelo gerenciamento da animação do peixe.
+    Px1.setLA(50); // Inicialização da variável responsável pelo controle de velocidade da animação do peixe.
+                   // reparar na Tela03 do jogo que a animação de cada peixe tem uma
+                   // velocidade diferente. É esta variável que controla isso.
+    
+    Px2.setbuffer(buffer); 
+    Px2.setimg(load_bitmap("Arquivos//Imagens//Aquatico1.bmp", NULL)); 
+    Px2.seth(30); 
+    Px2.setl(30); 
+    Px2.setx(210); 
+    Px2.sety(110);
+    Px2.setvx(0);  
+    Px2.setvy(0);  
+    Px2.setsx(3);
+    Px2.setsy(0);  
+    Px2.setA(0);
+    Px2.setLA(100);
+    
+    Px3.setbuffer(buffer); 
+    Px3.setimg(load_bitmap("Arquivos//Imagens//Aquatico1.bmp", NULL)); 
+    Px3.seth(30); 
+    Px3.setl(30); 
+    Px3.setx(355); 
+    Px3.sety(178);
+    Px3.setvx(0);  
+    Px3.setvy(0);  
+    Px3.setsx(3);
+    Px3.setsy(0);  
+    Px3.setA(0);
+    Px3.setLA(250);
+    
+    /* As funções foram colocardas nesse método "Inicializar",
+    porque, caso colocadas na construtora, causam um erro no programa.
+    Esse erro ocorre porque a Biblioteca Gráfica está sendo inicializada
+    na classe Principal, sendo assim, os objetos agregados nessa classe
+    têm suas construtoras 'lidas' antes da inicialização da biblioteca,
+    portanto o programa não reconhece as funções e ocorre o erro.
+    Desta forma, os objetos são inicializados depois da biblioteca gráfica
+    portanto, não há problemas. */          
 }
 
 void Mapa1::Entrar()
@@ -71,6 +127,8 @@ void Mapa1::Tela1()
         //(por exemplo por cima de uma barreira.
     }
     
+    Terra.setimg(load_bitmap("Arquivos//Imagens//Barreira1.bmp", NULL));
+    
     inicio = false;
     
     while (1) //loop principal.
@@ -86,15 +144,17 @@ void Mapa1::Tela1()
         P1->Movimento(); // Aciona o movimento do personagem.
         P2->Movimento();
         
-        if ((P1->getx() >= 810)&&(P2->getx() >= 810)) 
+        if ((P1->getx() >= 810)&&(P2->getx() >= 810))  // Se ambos os jogadores sairem da tela pela direita...
         {
-            Tela2();
+            P1->setx(0);  // Seta as novas posições do personagem na próxima tela.
+            P2->setx(0); 
+            Tela2();      // Vai para a tela2.
             break;
         }
         
-        if (key[KEY_ESC]) 
+        if (key[KEY_ESC]) // Se esc for pressionado...
         {
-            if (Sair()) 
+            if (Sair())   // Aciona a tela do menu de saída.
             {
                 break;
             }
@@ -108,24 +168,84 @@ void Mapa1::Tela1()
 
 void Mapa1::Tela2()
 {
-    P1->setx(0);
-    P2->setx(0);
+     
+    Terra.setimg(load_bitmap("Arquivos//Imagens//Praia1.bmp", NULL));
     
     while (1) //loop principal.
     {
         Mar.Desenha();   // Chama a função Desenha para desenhar o mar no buffer.
+        Terra.Desenha(); // Chama a função Desenha para desenhar a terra no buffer.
+        P1->Desenha();   // Chama a função Desenha para desenhar o personagem no buffer.
+        P2->Desenha();
+        T1.Desenha();    // Desenha Tanque.
+        
+        P1->testecolisao(P2,-200,600,-200,600); // Testa a colisão do Jogador 1 com a tela e com o jogador 2.
+        P2->testecolisao(P1,-200,600,-200,600); // Testa a colisão do Jogador 2 com a tela e com o jogador 1.
+        Mar.Movimento();   // Aciona o movimento do cenário.
+        P1->Movimento();  // Aciona o movimento do personagem.
+        P2->Movimento();
+        T1.Movimento();   // Aciona o movimento do inimigo (Tanque)
+        
+        if ((P1->getx() <= -190)&&(P2->getx() <= -190)) // Se ambos os jogadores sairem da tela pela esquerda...
+        {
+            Tela1(); // Vai para a tela 1.
+            break;
+        }
+        else if ((P1->gety() <= -190)&&(P2->gety() <= -190)) // Se ambos os jogadores sairem da tela por cima...
+        {
+            P1->sety(600); // Seta as novas posições dos personagens na proxima tela.
+            P2->sety(600);
+            Tela3();       // Vai para a tela 3.
+            break;
+        }
+        
+        if (key[KEY_ESC]) 
+        {
+            if (Sair()) 
+            {
+                break;
+                             
+            }
+        }
+               
+        blit(buffer, screen, 0, 0, 0, 0, 800, 600); // Desenha o buffer na tela.
+        clear( buffer ); // Limpa o buffer;
+        
+    }
+    rest(100); // Rest para evitar que o programa reconheça que o botão de 
+               // voltar foi pressionado várias vezes e acabe saindo do 
+               // Mapa1 inteiro. 
+}
+
+void Mapa1::Tela3()
+{
+    
+    Terra.setimg(load_bitmap("Arquivos//Imagens//Praia1.bmp", NULL));
+    
+    while (1) //loop principal.
+    {
+        Mar.Desenha();   // Chama a função Desenha para desenhar o mar no buffer.
+        Terra.Desenha(); // Chama a função Desenha para desenhar a terra no buffer.
+        Px1.Desenha();   // Desenha Peixe.
+        Px2.Desenha();
+        Px3.Desenha();
         P1->Desenha();   // Chama a função Desenha para desenhar o personagem no buffer.
         P2->Desenha();
         
-        P1->testecolisao(P2,-200,800,0,600); // Testa a colisão do Jogador 1 com a tela e com o jogador 2.
-        P2->testecolisao(P1,-200,800,0,600); // Testa a colisão do Jogador 2 com a tela e com o jogador 1.
+        P1->testecolisao(P2,0,600,0,900); // Testa a colisão do Jogador 1 com a tela e com o jogador 2.
+        P2->testecolisao(P1,0,600,0,900); // Testa a colisão do Jogador 2 com a tela e com o jogador 1.
         Mar.Movimento();   // Aciona o movimento do cenário.
-        P1->Movimento(); // Aciona o movimento do personagem.
+        P1->Movimento();   // Aciona o movimento do personagem.
         P2->Movimento();
+        Px1.Movimento();   // Aciona o movimento do inimigo (Peixe)
+        Px2.Movimento();
+        Px3.Movimento();
         
-        if ((P1->getx() <= -190)&&(P2->getx() <= -190)) 
+        if ((P1->gety() >= 630)&&(P2->gety() >= 630)) 
         {
-            Tela1();
+            P1->sety(0 - P1->geth());
+            P2->sety(0 - P2->geth());
+            Tela2();
             break;
         }
         
