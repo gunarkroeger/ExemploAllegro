@@ -6,6 +6,7 @@ Personagem::Personagem()
     B = false;
     D = false;
     E = false;
+    direcao = 1;
 }
 
 Personagem::~Personagem()
@@ -19,34 +20,44 @@ Personagem::~Personagem()
         img = I;         
     }
     
-    void Personagem::setx( const int X )
+    void Personagem::setx( const short int X )
     {
         x = X; 
     }
     
-    void Personagem::sety( const int Y )
+    void Personagem::sety( const short int Y )
     {
         y = Y;         
     }
     
-    void Personagem::seth( const int H )
+    void Personagem::seth( const short int H )
     {
         h = H;         
     }
     
-    void Personagem::setl( const int L )
+    void Personagem::setl( const short int L )
     {
         l = L;         
     }
     
-    void Personagem::setvx( const int VX )
+    void Personagem::setvx( const short int VX )
     {
         vx = VX;         
     }
     
-    void Personagem::setvy( const int VY )
+    void Personagem::setvy( const short int VY )
     {
         vy = VY;         
+    }
+    
+    void Personagem::setsx( const short int SX )
+    {
+        Sx = SX;         
+    }
+    
+    void Personagem::setsy( const short int SY )
+    {
+        Sy = SY;         
     }
     
 /* Gets */
@@ -55,34 +66,44 @@ Personagem::~Personagem()
         return img;
     }
     
-    const int Personagem::getx()
+    const short int Personagem::getx()
     {
         return x;
     }
     
-    const int Personagem::gety()
+    const short int Personagem::gety()
     {
         return y;
     }
     
-    const int Personagem::geth()
+    const short int Personagem::geth()
     {
         return h;
     }
     
-    const int Personagem::getl()
+    const short int Personagem::getl()
     {
         return l;
     }
     
-    const int Personagem::getvx()
+    const short int Personagem::getvx()
     {
         return vx;
     }
     
-    const int Personagem::getvy()
+    const short int Personagem::getvy()
     {
         return vy;
+    }
+    
+    const short int Personagem::getsx()
+    {
+        return Sx;
+    }
+    
+    const short int Personagem::getsy()
+    {
+        return Sy;
     }
 
 /* Movimentação */
@@ -105,5 +126,5 @@ void Personagem::setbuffer(BITMAP* B)
 
 void Personagem::Desenha()
 {
-    draw_sprite(buffer, img, x, y);  // Desenha no buffer  
+    masked_stretch_blit(img, buffer, Sx, Sy, l*2, h*2, x, y, l, h); // (Imagem, Buffer, Xinicial na IMG maior. Yinicial na IMG maior, Largura do subsprite, Altura do Subsprite, posiçãoX, posiçãoY, TamanhoX, TamanhoY);
 }

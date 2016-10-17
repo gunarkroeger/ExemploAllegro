@@ -9,12 +9,15 @@ class Personagem
     protected:          // Protected para que as classes derivadas possuam esses atributos.
            BITMAP* img; // Imagem.
            BITMAP* buffer; // buffer para que o jogador possa se desenhar na tela.
-           int x;       // Posição em x.
-           int y;       // Posição em y.
-           int h;       // Altura da imagem.
-           int l;       // Largura da imagem.
-           int vx;      // Velocidade em Y.
-           int vy;      // Velocidade em X.
+           short int x;       // Posição em x.
+           short int y;       // Posição em y.
+           short int h;       // Altura da imagem.
+           short int l;       // Largura da imagem.
+           short int vx;      // Velocidade em Y.
+           short int vy;      // Velocidade em X.
+           short int Sx;      // Posição x do sprite na imagem maior.
+           short int Sy;      // Posição y do sprite na imagem maior.
+           short int direcao; // Indica se o personagem está orientado na vertical ou na horizontal.
            
            bool C,B,D,E; // Variáveis para detectar o sentido das colisões.
             
@@ -24,21 +27,25 @@ class Personagem
            
            /* Sets */
            void setimg( BITMAP* I );
-           void setx( const int X );
-           void sety( const int Y );
-           void seth( const int H );
-           void setl( const int L );
-           void setvx( const int VX );
-           void setvy( const int VY );
+           void setx( const short int X );
+           void sety( const short int Y );
+           void seth( const short int H );
+           void setl( const short int L );
+           void setvx( const short int VX );
+           void setvy( const short int VY );
+           void setsx( const short int SX );
+           void setsy( const short int SY );
            
            /* Gets */
            BITMAP* getimg();
-           const int getx();
-           const int gety();
-           const int geth();
-           const int getl();
-           const int getvx();
-           const int getvy();
+           const short int getx();
+           const short int gety();
+           const short int geth();
+           const short int getl();
+           const short int getvx();
+           const short int getvy();
+           const short int getsx();
+           const short int getsy();
            
            /* Movimentação */
            virtual void Movimento();  // virtual para que o método possa ser redefinido nas subclasses

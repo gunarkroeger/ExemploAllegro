@@ -14,11 +14,47 @@ Jogador2::~Jogador2()
 /* Movimentação */
     void Jogador2::Movimento()    
     {
-         if ((key[KEY_W])&&( y > 0 )&&(C == false)) y = y - vy; 
+         if ((key[KEY_W])&&( y > 0 )&&(C == false)) 
+         {
+             if (direcao == 2) x = x + ((l/2) - (h/2)); 
+             Sx = 173;  
+             Sy = 5;    
+             l = 65;
+             h = 177;          
+             y = y - vy;  
+             direcao = 1;     
+         }
          // Idem ao Jogador1 porém com as teclas W A S D
-         if ((key[KEY_S])&&( (y+h) < 600)&&(B == false)) y = y + vy;  
-         if ((key[KEY_D])&&( (x+l) < 800)&&(D == false)) x = x + vx; 
-         if ((key[KEY_A])&&( x > 0)&&(E == false)) x = x - vx;                      
+         else if ((key[KEY_S])&&( (y+h) < 600)&&(B == false))   
+         {
+             if (direcao == 2) x = x + ((l/2) - (h/2));
+             Sx = 11;
+             Sy = 5;      
+             l = 65;
+             h = 177;              
+             y = y + vy;      
+             direcao = 1;       
+         } 
+         else if ((key[KEY_D])&&( (x+l) < 800)&&(D == false))  
+         {
+             if (direcao == 1) y = y + ((h/2) - (l/2));
+             Sx = 348;
+             Sy = 154;      
+             l = 177;
+             h = 65;              
+             x = x + vx;      
+             direcao = 2;        
+         }
+         else if ((key[KEY_A])&&( x > 0)&&(E == false)) 
+         {
+             if (direcao == 1) y = y + ((h/2) - (l/2));
+             Sx = 349;
+             Sy = 3;      
+             l = 177;
+             h = 65;              
+             x = x - vx;      
+             direcao = 2;          
+         }                   
     }
 
     void Jogador2::testecolisao(Jogador* P1)

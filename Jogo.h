@@ -3,16 +3,21 @@
 
 #include "Jogador.h"
 #include "Jogador2.h"
+#include "Cenario.h"
 
 class Jogo
 {
     private:
            BITMAP* buffer;
-           Jogador* P1;
-           Jogador2* P2;
            // Bitmap de buffer para desenhar todas as imagens nele
            // e logo em seguida jogá-lo inteiro na tela, isso evita
            // que a tela ou as imagens fiquem piscando.
+           Jogador* P1;
+           Jogador2* P2;
+           Cenario C;
+           
+           
+           
     public:
            Jogo();
            ~Jogo();
