@@ -2,13 +2,10 @@
 
 Personagem::Personagem()
 {
-    img = load_bitmap("Arquivos//Imagens//Objeto1.bmp", NULL);  //carrega a imagem a partir da pasta onde ela está.
-    h = 100; // inicializa a altura da imagem/personagem.
-    l = 100; // inicializa a largura da imagem/personagem.
-    x = 350; // Posição inicial em x.
-    y = 250; // Posição icial em y.
-    vx = 1;  // Velocidade icial do objeto em x.
-    vy = 1;  // Velocidade icial do objeto em y.
+    C = false;
+    B = false;
+    D = false;
+    E = false;
 }
 
 Personagem::~Personagem()
@@ -22,32 +19,32 @@ Personagem::~Personagem()
         img = I;         
     }
     
-    void Personagem::setx( int X )
+    void Personagem::setx( const int X )
     {
         x = X; 
     }
     
-    void Personagem::sety( int Y )
+    void Personagem::sety( const int Y )
     {
         y = Y;         
     }
     
-    void Personagem::seth( int H )
+    void Personagem::seth( const int H )
     {
         h = H;         
     }
     
-    void Personagem::setl( int L )
+    void Personagem::setl( const int L )
     {
         l = L;         
     }
     
-    void Personagem::setvx( int VX )
+    void Personagem::setvx( const int VX )
     {
         vx = VX;         
     }
     
-    void Personagem::setvy( int VY )
+    void Personagem::setvy( const int VY )
     {
         vy = VY;         
     }
@@ -58,32 +55,32 @@ Personagem::~Personagem()
         return img;
     }
     
-    int Personagem::getx()
+    const int Personagem::getx()
     {
         return x;
     }
     
-    int Personagem::gety()
+    const int Personagem::gety()
     {
         return y;
     }
     
-    int Personagem::geth()
+    const int Personagem::geth()
     {
         return h;
     }
     
-    int Personagem::getl()
+    const int Personagem::getl()
     {
         return l;
     }
     
-    int Personagem::getvx()
+    const int Personagem::getvx()
     {
         return vx;
     }
     
-    int Personagem::getvy()
+    const int Personagem::getvy()
     {
         return vy;
     }
@@ -91,14 +88,14 @@ Personagem::~Personagem()
 /* Movimentação */
     void Personagem::Movimento()    
     {
-                                      //  |Se a seta para cima for pressionada 
-                                      //  |o personagem tem sua posição em Y 
-         if ((key[KEY_UP])&&( y > 0 )) y = y - vy; // -|reduzida (no Allegro o eixo Y é oposto)
-                                      //  |e se desloca para cima tantos pixels
-                                      //  |quanto for o valor da velocidade do personagem em Y.
-         if ((key[KEY_DOWN])&&( (y+h) < 600)) y = y + vy;  // Análogo ao anterior, porém, para baixo. 
-         if ((key[KEY_RIGHT])&&( (x+l) < 800)) x = x + vx; // Em x o eixo é padrão, portanto para a direita é positivo.
-         if ((key[KEY_LEFT])&&( x > 0)) x = x - vx;  // E para a esquerda negativo.                      
+                                                                 //  |Se a seta para cima for pressionada 
+                                                                 //  |o personagem tem sua posição em Y 
+         if ((key[KEY_UP])&&( y > 0 )&&(C == false)) y = y - vy; // -|reduzida (no Allegro o eixo Y é oposto)
+                                                                 //  |e se desloca para cima tantos pixels
+                                                                 //  |quanto for o valor da velocidade do personagem em Y.
+         if ((key[KEY_DOWN])&&( (y+h) < 600)&&(B == false)) y = y + vy;  // Análogo ao anterior, porém, para baixo. 
+         if ((key[KEY_RIGHT])&&( (x+l) < 800)&&(D == false)) x = x + vx; // Em x o eixo é padrão, portanto para a direita é positivo.
+         if ((key[KEY_LEFT])&&( x > 0)&&(E == false)) x = x - vx;        // E para a esquerda negativo.                      
     }
 
 void Personagem::setbuffer(BITMAP* B)

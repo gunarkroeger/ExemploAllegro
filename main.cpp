@@ -1,40 +1,29 @@
-#include "Principal.h"
+/* 
+########################################################################
+# Exemplo de Allegro orientado a objetos elaborado por:                #
+# Jorge Leandro Francisco                                              # 
+# Monitor da Disciplina Fundamentos de Programação 2                   #
+# do curso de Engenharia Eletrônica da UTFPR                           #
+# Prof. Jean M. Simão                                                  #
+########################################################################
+*/
 
-void init();
-void deinit();
+#include "Principal.h"
 
 int main() 
 {
-	init();
+    
     Principal ObjPrincipal;
     
-	deinit();
 	return 0;
+	
 }
 END_OF_MAIN()
 
-void init() 
-{
-	int depth, res;
-	allegro_init();
-	depth = desktop_color_depth();
-	if (depth == 0) depth = 32;
-	set_color_depth(depth);
-	res = set_gfx_mode(GFX_AUTODETECT_WINDOWED, 800, 600, 0, 0);
-	if (res != 0) 
-    {
-		allegro_message(allegro_error);
-		exit(-1);
-	}
-
-	install_timer();
-	install_keyboard();
-	install_mouse();
-	/* add other initializations here */
-}
-
-void deinit() 
-{
-	clear_keybuf();
-	/* add other deinitializations here */
-}
+/* 
+Para que o código fique mais coerente com os princípios de orientação 
+a objetos, as funções de inicialização da biblioteca gráfica foram 
+retiradas do 'main' onde estavam implementadas de forma procedural e 
+incorporadas em uma classe GerenciadorGráfico. 
+O objeto gerenciador é agregado à classe Principal. 
+*/

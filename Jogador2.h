@@ -3,6 +3,8 @@
 
 #include "Personagem.h"
 
+class Jogador;
+
 class Jogador2 : public Personagem
 {
     private:
@@ -14,6 +16,7 @@ class Jogador2 : public Personagem
            /* Movimentação */
            void Movimento();
            
+           void testecolisao(Jogador* P1);
 };
 
 #endif

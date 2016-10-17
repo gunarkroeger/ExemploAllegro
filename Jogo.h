@@ -2,6 +2,7 @@
 #define _JOGO_H_
 
 #include "Jogador.h"
+#include "Jogador2.h"
 
 class Jogo
 {
@@ -16,6 +17,7 @@ class Jogo
            Jogo();
            ~Jogo();
            
+           void Inicializar();
            void Iniciar();
            void Tela1();
            

@@ -2,7 +2,7 @@
 #define _JOGADOR_H_
 
 #include "Personagem.h"
-#include "Jogador2.h"
+class Jogador2;
 
 class Jogador : public Personagem
 {
@@ -14,6 +14,9 @@ class Jogador : public Personagem
            
            /* Movimentação */
            void Movimento();
+           
+           /* Colisão */
+           void testecolisao(Jogador2* P2);
            
 };
 

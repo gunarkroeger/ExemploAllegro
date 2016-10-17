@@ -6,9 +6,10 @@
 class Principal
 {
     private:
-           Jogo J;       // O Jogo em si
-           Jogador  P1;  // O Jogador 1
-           Jogador2 P2;  // O Jogador 2
+           GerenciadorGrafico Allegro; // Gerenciador do Allegro.
+           Jogo J;       // O Jogo em si.
+           Jogador  P1;  // O Jogador 1.
+           Jogador2 P2;  // O Jogador 2.
             
     public:
            Principal();

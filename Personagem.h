@@ -1,7 +1,8 @@
 #ifndef _PERSONAGEM_H_
 #define _PERSONAGEM_H_
 
-#include <allegro.h>
+#include "GerenciadorGrafico.h"
+
 
 class Personagem
 {
@@ -14,6 +15,8 @@ class Personagem
            int l;       // Largura da imagem.
            int vx;      // Velocidade em Y.
            int vy;      // Velocidade em X.
+           
+           bool C,B,D,E; // Variáveis para detectar o sentido das colisões.
             
     public:
            Personagem();
@@ -21,21 +24,21 @@ class Personagem
            
            /* Sets */
            void setimg( BITMAP* I );
-           void setx( int X );
-           void sety( int Y );
-           void seth( int H );
-           void setl( int L );
-           void setvx( int VX );
-           void setvy( int VY );
+           void setx( const int X );
+           void sety( const int Y );
+           void seth( const int H );
+           void setl( const int L );
+           void setvx( const int VX );
+           void setvy( const int VY );
            
            /* Gets */
            BITMAP* getimg();
-           int getx();
-           int gety();
-           int geth();
-           int getl();
-           int getvx();
-           int getvy();
+           const int getx();
+           const int gety();
+           const int geth();
+           const int getl();
+           const int getvx();
+           const int getvy();
            
            /* Movimentação */
            virtual void Movimento();  // virtual para que o método possa ser redefinido nas subclasses
